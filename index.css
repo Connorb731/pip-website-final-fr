@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 220 14.3% 4.1%;
+  --muted: 220 8% 95%;
+  --muted-foreground: 220 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 14.3% 4.1%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --primary: 200 90% 48%; /* #0ea5e9 */
+  --primary-dark: 201 92% 39%; /* #0284c7 */
+  --primary-darker: 201 96% 32%; /* #0369a1 */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 220 8% 96%;
+  --secondary-foreground: 220 9.8% 10%;
+  --accent: 220 8% 96%;
+  --accent-foreground: 220 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 200 90% 48%;
+  --radius: 0.5rem;
+  --section-light: 220 25% 97%;
+  --section-medium: 220 20% 95%;
+  --section-dark: 220 20% 92%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 200 90% 48%;
+  --primary-dark: 201 92% 39%;
+  --primary-darker: 201 96% 32%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 200 90% 48%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+.bg-gradient {
+  @apply bg-gradient-to-r from-[#0ea5e9] to-[#0284c7];
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0ea5e9] to-[#0284c7];
+}
+
+.mobile-menu {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+.mobile-menu.open {
+  transform: scaleY(1);
+  max-height: 500px; /* Adjust as needed based on content */
+}
+
+@keyframes slideIn {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes logoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-slide-track {
+  display: flex;
+  animation: logo-scroll 66s linear infinite;
+  width: max-content;
+}
+
+.logo-slide {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.logo-slide-item {
+  width: 180px;
+  margin: 0 20px;
+  flex-shrink: 0;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fallDown {
+  0% { transform: translateY(-20px); opacity: 0.1; }
+  100% { transform: translateY(700px); opacity: 0.2; }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-logo-scroll {
+  animation: logoScroll 30s linear infinite;
+}
+
+.animate-fall {
+  animation: fallDown linear infinite;
+}
